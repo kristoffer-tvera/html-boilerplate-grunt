@@ -7,8 +7,7 @@
     "url": "git+https://github.com/kristoffer-tvera/html-boilerplate-grunt.git"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
-    "node-sass": "^4.7.2",
+    "autoprefixer": "^8.5.0",
     "grunt": "^1.0.1",
     "grunt-browser-sync": "^2.2.0",
     "grunt-concurrent": "^2.3.1",
