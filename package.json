@@ -21,6 +21,10 @@
     "grunt-remove-logging": "^0.2.0",
     "grunt-sass": "^2.0.0"
   },
+  "scripts": {
+    "dev": "grunt monitor",
+    "release": "grunt release"
+  },
   "keywords": [
     "html",
     "boilerplate",

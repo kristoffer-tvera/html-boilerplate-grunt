@@ -10,7 +10,7 @@ module.exports = function (grunt) {
                     sourcemap: false,
                 },
                 files: {
-                    'css/site.css': 'sass/site.scss',
+                    'styling/site.css': 'styling/sass/main.scss',
                 }
             },
 
@@ -20,7 +20,7 @@ module.exports = function (grunt) {
                     sourcemap: false
                 },
                 files: {
-                    'css/site.min.css': 'sass/site.scss',
+                    'styling/site.min.css': 'styling/sass/main.scss',
                 }
             },
         },
@@ -40,16 +40,16 @@ module.exports = function (grunt) {
                 ]
             },
             expanded: {
-                src: 'css/site.css'
+                src: 'styling/site.css'
             },
             min: {
-                src: 'css/site.min.css'
+                src: 'styling/site.min.css'
             }
         },
 
         // Browser Sync integration
         browserSync: {
-            bsFiles: ["js/*.js", "css/*.css", "!**/node_modules/**/*"],
+            bsFiles: ["script/*.js", "styling/*.css", "!**/node_modules/**/*"],
             options: {
                 server: {
                     baseDir: "./" // make server from root dir
@@ -73,21 +73,13 @@ module.exports = function (grunt) {
             dist: {
                 // the files to concatenate
                 src: [
-                    "js/partial/globals.js",
-                    "js/partial/loading.js",
-                    "js/partial/level_check.js",
-                    'js/partial/event_handlers.js',
-                    'js/partial/render_level.js',
-                    'js/partial/core_game_logic.js',
-                    "js/main.js",
-                    "js/plugins.js",
-                    "js/partial/achievements.js",
-                    "js/partial/helper_functions.js",
-                    "js/partial/local_storage.js",
-                    "js/partial/player_check.js"
+                    "script/partials/Globals.js",
+                    "script/partials/Eventlisteners.js",
+                    "script/partials/Helperfunctions.js",
+                    "script/partials/Main.js"
                 ],
                 // the location of the resulting JS file
-                dest: 'js/site.js'
+                dest: 'script/site.js'
             },
             temp: {
                 // the files to concatenate
@@ -98,21 +90,13 @@ module.exports = function (grunt) {
 
                 },
                 src: [
-                    "js/partial/globals.js",
-                    "js/partial/loading.js",
-                    "js/partial/level_check.js",
-                    'js/partial/event_handlers.js',
-                    'js/partial/render_level.js',
-                    'js/partial/core_game_logic.js',
-                    "js/main.js",
-                    "js/plugins.js",
-                    "js/partial/achievements.js",
-                    "js/partial/helper_functions.js",
-                    "js/partial/local_storage.js",
-                    "js/partial/player_check.js"
+                    "script/partials/Globals.js",
+                    "script/partials/Eventlisteners.js",
+                    "script/partials/Helperfunctions.js",
+                    "script/partials/Main.js"
                 ],
                 // the location of the resulting JS file
-                dest: 'js/site.js'
+                dest: 'script/main.js'
             },
         },
 
@@ -127,7 +111,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'js/site.min.js': ['js/site.js']
+                    'script/site.min.js': ['script/site.js']
                 }
             }
         },
@@ -142,7 +126,7 @@ module.exports = function (grunt) {
         //  Watch Files
         watch: {
             sass: {
-                files: ['sass/**/*'],
+                files: ['styling/sass/**/*'],
                 tasks: ['sass_compile'],
                 options: {
                     interrupt: false,
@@ -150,7 +134,7 @@ module.exports = function (grunt) {
                 },
             },
             js: {
-                files: ['js/**/*'],
+                files: ['script/**/*'],
                 tasks: ['js_compile'],
                 options: {
                     interrupt: false,
@@ -179,7 +163,7 @@ module.exports = function (grunt) {
                 options: {
                     enabled: true,
                     message: 'Watching Files!',
-                    title: "Clickerino", // defaults to the name in package.json, or will use project directory's name
+                    title: "replace me", // defaults to the name in package.json, or will use project directory's name
                     success: true, // whether successful grunt executions should be notified automatically
                     duration: 1 // the duration of notification in seconds, for `notify-send only
                 }
@@ -189,7 +173,7 @@ module.exports = function (grunt) {
                 options: {
                     enabled: true,
                     message: 'Sass Compiled!',
-                    title: "Clickerino",
+                    title: "replace me",
                     success: true,
                     duration: 1
                 }
@@ -199,7 +183,7 @@ module.exports = function (grunt) {
                 options: {
                     enabled: true,
                     message: 'Server Running!',
-                    title: "Clickerino",
+                    title: "replace me",
                     success: true,
                     duration: 1
                 }
