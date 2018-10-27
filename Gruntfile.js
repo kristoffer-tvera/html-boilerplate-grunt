@@ -130,7 +130,7 @@ module.exports = function (grunt) {
         watch: {
             sass: {
                 files: ['styling/sass/**/*'],
-                tasks: ['sass_compile'],
+                tasks: ['scss'],
                 options: {
                     interrupt: false,
                     spawn: false,
@@ -138,7 +138,7 @@ module.exports = function (grunt) {
             },
             js: {
                 files: ['script/**/*'],
-                tasks: ['js_compile'],
+                tasks: ['js'],
                 options: {
                     interrupt: false,
                     spawn: false,
@@ -154,44 +154,9 @@ module.exports = function (grunt) {
                 limit: 10,
             },
             monitor: {
-                tasks: ["sass_compile", "watch:sass",
-                    "js_compile", "watch:js",
-                    "notify:watching", 'server']
+                tasks: ["scss", "watch:sass", "js", "watch:js", 'server']
             },
-        },
-
-        //  Notifications
-        notify: {
-            watching: {
-                options: {
-                    enabled: true,
-                    message: 'Watching Files!',
-                    title: "replace me", // defaults to the name in package.json, or will use project directory's name
-                    success: true, // whether successful grunt executions should be notified automatically
-                    duration: 1 // the duration of notification in seconds, for `notify-send only
-                }
-            },
-
-            sass_compile: {
-                options: {
-                    enabled: true,
-                    message: 'Sass Compiled!',
-                    title: "replace me",
-                    success: true,
-                    duration: 1
-                }
-            },
-
-            server: {
-                options: {
-                    enabled: true,
-                    message: 'Server Running!',
-                    title: "replace me",
-                    success: true,
-                    duration: 1
-                }
-            }
-        },
+        }
     };
 
     grunt.initConfig(config);
@@ -204,7 +169,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-concurrent');
-    grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-browser-sync');
 
@@ -221,9 +185,9 @@ module.exports = function (grunt) {
         ]
     );
 
-    grunt.registerTask('js_compile', ['concat:dist', 'uglify:dist']);
-    grunt.registerTask('sass_compile', ['sass:expanded', 'sass:min', 'notify:sass_compile']);
-    grunt.registerTask('server', ['browserSync', 'notify:server']);
+    grunt.registerTask('js', ['concat:dist', 'uglify:dist']);
+    grunt.registerTask('scss', ['sass:expanded', 'sass:min']);
+    grunt.registerTask('server', ['browserSync']);
     grunt.registerTask('monitor', ["concurrent:monitor"]);
-    grunt.registerTask('travis', ['sass_compile']);
+
 };
